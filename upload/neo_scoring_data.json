@@ -1,0 +1,1922 @@
+{
+  "1": {
+    "facet": "N1",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "2": {
+    "facet": "E1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "3": {
+    "facet": "O1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "4": {
+    "facet": "A1",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "5": {
+    "facet": "C1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "6": {
+    "facet": "N2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "7": {
+    "facet": "E2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "8": {
+    "facet": "O2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "9": {
+    "facet": "A2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "10": {
+    "facet": "C2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "11": {
+    "facet": "N3",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "12": {
+    "facet": "E3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "13": {
+    "facet": "O3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "14": {
+    "facet": "A3",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "15": {
+    "facet": "C3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "16": {
+    "facet": "N4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "17": {
+    "facet": "E4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "18": {
+    "facet": "O4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "19": {
+    "facet": "A4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "20": {
+    "facet": "C4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "21": {
+    "facet": "N5",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "22": {
+    "facet": "E5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "23": {
+    "facet": "O5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "24": {
+    "facet": "A5",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "25": {
+    "facet": "C5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "26": {
+    "facet": "N6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "27": {
+    "facet": "E6",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "28": {
+    "facet": "O6",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "29": {
+    "facet": "A6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "30": {
+    "facet": "C6",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "31": {
+    "facet": "N1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "32": {
+    "facet": "E1",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "33": {
+    "facet": "O1",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "34": {
+    "facet": "A1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "35": {
+    "facet": "C1",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "36": {
+    "facet": "N2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "37": {
+    "facet": "E2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "38": {
+    "facet": "O2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "39": {
+    "facet": "A2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "40": {
+    "facet": "C2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "41": {
+    "facet": "N3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "42": {
+    "facet": "E3",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "43": {
+    "facet": "O3",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "44": {
+    "facet": "A3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "45": {
+    "facet": "C3",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "46": {
+    "facet": "N4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "47": {
+    "facet": "E4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "48": {
+    "facet": "O4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "49": {
+    "facet": "A4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "50": {
+    "facet": "C4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "51": {
+    "facet": "N5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "52": {
+    "facet": "E5",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "53": {
+    "facet": "O5",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "54": {
+    "facet": "A5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "55": {
+    "facet": "C5",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "56": {
+    "facet": "N6",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "57": {
+    "facet": "E6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "58": {
+    "facet": "O6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "59": {
+    "facet": "A6",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "60": {
+    "facet": "C6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "61": {
+    "facet": "N1",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "62": {
+    "facet": "E1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "63": {
+    "facet": "O1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "64": {
+    "facet": "A1",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "65": {
+    "facet": "C1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "66": {
+    "facet": "N2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "67": {
+    "facet": "E2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "68": {
+    "facet": "O2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "69": {
+    "facet": "A2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "70": {
+    "facet": "C2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "71": {
+    "facet": "N3",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "72": {
+    "facet": "E3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "73": {
+    "facet": "O3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "74": {
+    "facet": "A3",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "75": {
+    "facet": "C3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "76": {
+    "facet": "N4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "77": {
+    "facet": "E4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "78": {
+    "facet": "O4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "79": {
+    "facet": "A4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "80": {
+    "facet": "C4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "81": {
+    "facet": "N5",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "82": {
+    "facet": "E5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "83": {
+    "facet": "O5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "84": {
+    "facet": "A5",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "85": {
+    "facet": "C5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "86": {
+    "facet": "N6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "87": {
+    "facet": "E6",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "88": {
+    "facet": "O6",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "89": {
+    "facet": "A6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "90": {
+    "facet": "C6",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "91": {
+    "facet": "N1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "92": {
+    "facet": "E1",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "93": {
+    "facet": "O1",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "94": {
+    "facet": "A1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "95": {
+    "facet": "C1",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "96": {
+    "facet": "N2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "97": {
+    "facet": "E2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "98": {
+    "facet": "O2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "99": {
+    "facet": "A2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "100": {
+    "facet": "C2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "101": {
+    "facet": "N3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "102": {
+    "facet": "E3",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "103": {
+    "facet": "O3",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "104": {
+    "facet": "A3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "105": {
+    "facet": "C3",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "106": {
+    "facet": "N4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "107": {
+    "facet": "E4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "108": {
+    "facet": "O4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "109": {
+    "facet": "A4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "110": {
+    "facet": "C4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "111": {
+    "facet": "N5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "112": {
+    "facet": "E5",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "113": {
+    "facet": "O5",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "114": {
+    "facet": "A5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "115": {
+    "facet": "C5",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "116": {
+    "facet": "N6",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "117": {
+    "facet": "E6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "118": {
+    "facet": "O6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "119": {
+    "facet": "A6",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "120": {
+    "facet": "C6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "121": {
+    "facet": "N1",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "122": {
+    "facet": "E1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "123": {
+    "facet": "O1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "124": {
+    "facet": "A1",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "125": {
+    "facet": "C1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "126": {
+    "facet": "N2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "127": {
+    "facet": "E2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "128": {
+    "facet": "O2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "129": {
+    "facet": "A2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "130": {
+    "facet": "C2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "131": {
+    "facet": "N3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "132": {
+    "facet": "E3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "133": {
+    "facet": "O3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "134": {
+    "facet": "A3",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "135": {
+    "facet": "C3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "136": {
+    "facet": "N4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "137": {
+    "facet": "E4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "138": {
+    "facet": "O4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "139": {
+    "facet": "A4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "140": {
+    "facet": "C4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "141": {
+    "facet": "N5",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "142": {
+    "facet": "E5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "143": {
+    "facet": "O5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "144": {
+    "facet": "A5",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "145": {
+    "facet": "C5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "146": {
+    "facet": "N6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "147": {
+    "facet": "E6",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "148": {
+    "facet": "O6",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "149": {
+    "facet": "A6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "150": {
+    "facet": "C6",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "151": {
+    "facet": "N1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "152": {
+    "facet": "E1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "153": {
+    "facet": "O1",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "154": {
+    "facet": "A1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "155": {
+    "facet": "C1",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "156": {
+    "facet": "N2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "157": {
+    "facet": "E2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "158": {
+    "facet": "O2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "159": {
+    "facet": "A2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "160": {
+    "facet": "C2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "161": {
+    "facet": "N3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "162": {
+    "facet": "E3",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "163": {
+    "facet": "O3",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "164": {
+    "facet": "A3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "165": {
+    "facet": "C3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "166": {
+    "facet": "N4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "167": {
+    "facet": "E4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "168": {
+    "facet": "O4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "169": {
+    "facet": "A4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "170": {
+    "facet": "C4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "171": {
+    "facet": "N5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "172": {
+    "facet": "E5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "173": {
+    "facet": "O5",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "174": {
+    "facet": "A5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "175": {
+    "facet": "C5",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "176": {
+    "facet": "N6",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "177": {
+    "facet": "E6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "178": {
+    "facet": "O6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "179": {
+    "facet": "A6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "180": {
+    "facet": "C6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "181": {
+    "facet": "N1",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "182": {
+    "facet": "E1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "183": {
+    "facet": "O1",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "184": {
+    "facet": "A1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "185": {
+    "facet": "C1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "186": {
+    "facet": "N2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "187": {
+    "facet": "E2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "188": {
+    "facet": "O2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "189": {
+    "facet": "A2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "190": {
+    "facet": "C2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "191": {
+    "facet": "N3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "192": {
+    "facet": "E3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "193": {
+    "facet": "O3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "194": {
+    "facet": "A3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "195": {
+    "facet": "C3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "196": {
+    "facet": "N4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "197": {
+    "facet": "E4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "198": {
+    "facet": "O4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "199": {
+    "facet": "A4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "200": {
+    "facet": "C4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "201": {
+    "facet": "N5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "202": {
+    "facet": "E5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "203": {
+    "facet": "O5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "204": {
+    "facet": "A5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "205": {
+    "facet": "C5",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "206": {
+    "facet": "N6",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "207": {
+    "facet": "E6",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "208": {
+    "facet": "O6",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "209": {
+    "facet": "A6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "210": {
+    "facet": "C6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "211": {
+    "facet": "N1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "212": {
+    "facet": "E1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "213": {
+    "facet": "O1",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "214": {
+    "facet": "A1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "215": {
+    "facet": "C1",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "216": {
+    "facet": "N2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "217": {
+    "facet": "E2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "218": {
+    "facet": "O2",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "219": {
+    "facet": "A2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "220": {
+    "facet": "C2",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "221": {
+    "facet": "N3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "222": {
+    "facet": "E3",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "223": {
+    "facet": "O3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "224": {
+    "facet": "A3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "225": {
+    "facet": "C3",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "226": {
+    "facet": "N4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "227": {
+    "facet": "E4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "228": {
+    "facet": "O4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "229": {
+    "facet": "A4",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "230": {
+    "facet": "C4",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "231": {
+    "facet": "N5",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "232": {
+    "facet": "E5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "233": {
+    "facet": "O5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "234": {
+    "facet": "A5",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "235": {
+    "facet": "C5",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "236": {
+    "facet": "N6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "237": {
+    "facet": "E6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "238": {
+    "facet": "O6",
+    "completely_agree": 0,
+    "agree": 1,
+    "neutral": 2,
+    "disagree": 3,
+    "completely_disagree": 4
+  },
+  "239": {
+    "facet": "A6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  },
+  "240": {
+    "facet": "C6",
+    "completely_agree": 4,
+    "agree": 3,
+    "neutral": 2,
+    "disagree": 1,
+    "completely_disagree": 0
+  }
+}

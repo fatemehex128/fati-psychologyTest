@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useRef } from "react";
 import { motion } from "framer-motion";
-import { TESTS, FORMSUBMIT_ENDPOINT, type TestId } from "@/lib/tests-config";
+import { TESTS, type TestId } from "@/lib/tests-config";
 import { PsychologyIcon } from "@/components/psychology-icons";
 import { PersonalInfoForm, type PersonalInfo } from "@/components/questionnaire/personal-info-form";
 import { QuestionItem } from "@/components/questionnaire/question-item";
@@ -190,13 +190,15 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
       });
       formData.append("answers_json", JSON.stringify(answers, null, 2));
 
-      const res = await fetch(FORMSUBMIT_ENDPOINT, {
+      const res = await fetch("/api/submit", {
         method: "POST",
-        headers: { Accept: "application/json" },
         body: formData,
       });
 
-      if (!res.ok) throw new Error("FormSubmit request failed");
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.success) {
+        throw new Error(data?.error || "FormSubmit request failed");
+      }
 
       toast({
         title: "ارسال موفقیت‌آمیز بود ✅",
