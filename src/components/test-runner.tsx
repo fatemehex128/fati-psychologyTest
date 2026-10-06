@@ -2,7 +2,6 @@
 
 import { useState, useMemo, useRef } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { TESTS, FORMSUBMIT_ENDPOINT, type TestId } from "@/lib/tests-config";
 import { PsychologyIcon } from "@/components/psychology-icons";
 import { PersonalInfoForm, type PersonalInfo } from "@/components/questionnaire/personal-info-form";
@@ -12,19 +11,9 @@ import { McmiQuestionItem } from "@/components/questionnaire/mcmi-question-item"
 import { ProgressBar } from "@/components/questionnaire/progress-bar";
 import { ThankYou } from "@/components/questionnaire/thank-you";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/hooks/use-toast";
-import {
-  ArrowRight,
-  Send,
-  Loader2,
-  ClipboardCheck,
-  BookOpen,
-  Clock,
-  ListChecks,
-  Info,
-} from "lucide-react";
+import { ArrowRight, Send, Loader2 } from "lucide-react";
 
 type Answers = Record<number, number>;
 
@@ -90,7 +79,6 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
     return true;
   };
 
-  // Category/scale scores summary for the email body
   const categoryScores = useMemo(() => {
     const sums: Record<string, { total: number; count: number }> = {};
     Object.keys(test.scales).forEach((k) => (sums[k] = { total: 0, count: 0 }));
@@ -251,39 +239,44 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
     );
   }
 
+  // Color classes per test
+  const colorClasses: Record<string, { iconBg: string; iconColor: string; textAccent: string; btnHover: string }> = {
+    rose: { iconBg: "bg-rose-100 dark:bg-rose-950/40", iconColor: "text-rose-600 dark:text-rose-400", textAccent: "text-rose-600 dark:text-rose-400", btnHover: "hover:border-rose-300" },
+    emerald: { iconBg: "bg-emerald-100 dark:bg-emerald-950/40", iconColor: "text-emerald-600 dark:text-emerald-400", textAccent: "text-emerald-600 dark:text-emerald-400", btnHover: "hover:border-emerald-300" },
+    violet: { iconBg: "bg-violet-100 dark:bg-violet-950/40", iconColor: "text-violet-600 dark:text-violet-400", textAccent: "text-violet-600 dark:text-violet-400", btnHover: "hover:border-violet-300" },
+  };
+  const c = colorClasses[test.color];
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      {/* Top bar with back button + test name */}
+      {/* Minimal top bar */}
       <div className="sticky top-0 z-40 border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
-        <div className="mx-auto flex max-w-4xl items-center justify-between gap-3 px-4 py-3">
-          <Button
-            type="button"
+        <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3">
+          <button
             onClick={onBack}
-            variant="ghost"
-            size="sm"
-            className="gap-1.5"
+            className="flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowRight className="h-4 w-4" />
             بازگشت
-          </Button>
-          <div className="flex items-center gap-2 text-sm">
-            <span className="font-semibold text-foreground">{test.faName}</span>
-            <span className="text-xs text-muted-foreground">|</span>
-            <span className="text-xs text-muted-foreground">{test.author}</span>
+          </button>
+
+          {/* Test title + icon (minimal) */}
+          <div className="flex items-center gap-2">
+            <span className={`flex h-7 w-7 items-center justify-center rounded-lg ${c.iconBg} ${c.iconColor}`}>
+              <PsychologyIcon name={test.iconName} className="h-4 w-4" />
+            </span>
+            <span className="text-sm font-medium text-foreground">{test.faName}</span>
           </div>
         </div>
       </div>
 
-      {/* Progress bar (sticky, below top bar) */}
+      {/* Progress bar (sticky) */}
       <div className="sticky top-[57px] z-30">
         <ProgressBar answered={answeredCount} total={totalQuestions} />
       </div>
 
       <main className="flex-1 pb-10 pt-4">
-        {/* Hero with test info */}
-        <TestHero test={test} />
-
-        <div className="mx-auto max-w-3xl px-4 space-y-6">
+        <div className="mx-auto max-w-3xl px-4 space-y-5">
           {/* Personal Info Form */}
           <PersonalInfoForm
             values={personal}
@@ -291,64 +284,48 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
             onChange={handlePersonalChange}
           />
 
-          {/* Scales legend */}
-          <ScalesLegend test={test} />
-
           {/* Questions Section */}
           <div ref={questionsSectionRef}>
-            <Card className="border-primary/20">
-              <CardHeader className="pb-3">
-                <CardTitle className="flex items-center justify-between gap-2 text-xl text-primary">
-                  <span className="flex items-center gap-2">
-                    <ClipboardCheck className="h-5 w-5" />
-                    {test.faName}
-                  </span>
-                  <span className="text-xs font-normal text-muted-foreground">
-                    {answeredCount} از {totalQuestions} پاسخ داده شده
-                  </span>
-                </CardTitle>
-                <p className="text-sm text-muted-foreground mt-1">
-                  {test.id === "glasser" && "لطفاً هر سؤال را بر اساس واقعیت زندگی خود پاسخ دهید. مقیاس از ۱ (بسیارکم) تا ۵ (بسیارزیاد)."}
-                  {test.id === "neo" && "لطفاً میزان موافقت خود را با هر عبارت بیان کنید. مقیاس از ۰ (کاملاً مخالفم) تا ۴ (کاملاً موافقم)."}
-                  {test.id === "mcmi" && "لطفاً به هر عبارت با «بله» یا «خیر» پاسخ دهید. پاسخ صادقانه به دقت نتیجه کمک می‌کند."}
-                </p>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {test.id === "glasser" &&
-                  test.questions.map((q, idx) => (
-                    <QuestionItem
-                      key={q.id}
-                      question={q as any}
-                      index={idx}
-                      value={answers[q.id] ?? null}
-                      onAnswer={handleAnswer}
-                      likertOptions={test.likertOptions}
-                    />
-                  ))}
-                {test.id === "neo" &&
-                  test.questions.map((q, idx) => (
-                    <NeoQuestionItem
-                      key={q.id}
-                      question={q as any}
-                      index={idx}
-                      value={answers[q.id] ?? null}
-                      onAnswer={handleAnswer}
-                      likertOptions={test.likertOptions}
-                    />
-                  ))}
-                {test.id === "mcmi" &&
-                  test.questions.map((q, idx) => (
-                    <McmiQuestionItem
-                      key={q.id}
-                      question={q as any}
-                      index={idx}
-                      value={answers[q.id] ?? null}
-                      onAnswer={handleAnswer}
-                      likertOptions={test.likertOptions}
-                    />
-                  ))}
-              </CardContent>
-            </Card>
+            <div className="mb-3 px-1">
+              <h2 className="text-base font-semibold text-foreground">
+                {answeredCount} از {totalQuestions} سؤال پاسخ داده شده
+              </h2>
+            </div>
+            <div className="space-y-2.5">
+              {test.id === "glasser" &&
+                test.questions.map((q, idx) => (
+                  <QuestionItem
+                    key={q.id}
+                    question={q as any}
+                    index={idx}
+                    value={answers[q.id] ?? null}
+                    onAnswer={handleAnswer}
+                    likertOptions={test.likertOptions}
+                  />
+                ))}
+              {test.id === "neo" &&
+                test.questions.map((q, idx) => (
+                  <NeoQuestionItem
+                    key={q.id}
+                    question={q as any}
+                    index={idx}
+                    value={answers[q.id] ?? null}
+                    onAnswer={handleAnswer}
+                    likertOptions={test.likertOptions}
+                  />
+                ))}
+              {test.id === "mcmi" &&
+                test.questions.map((q, idx) => (
+                  <McmiQuestionItem
+                    key={q.id}
+                    question={q as any}
+                    index={idx}
+                    value={answers[q.id] ?? null}
+                    onAnswer={handleAnswer}
+                    likertOptions={test.likertOptions}
+                  />
+                ))}
+            </div>
           </div>
 
           {/* Submit Button (sticky bottom) */}
@@ -401,103 +378,12 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
   );
 }
 
-function TestHero({ test }: { test: typeof TESTS[TestId] }) {
-  const colorClasses: Record<string, { iconBg: string; iconColor: string; gradient: string; textAccent: string; badge: string }> = {
-    rose: { iconBg: "bg-rose-100 dark:bg-rose-950/40", iconColor: "text-rose-600 dark:text-rose-400", gradient: "from-rose-500/20 via-red-500/10 to-transparent", textAccent: "text-rose-600 dark:text-rose-400", badge: "bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300" },
-    emerald: { iconBg: "bg-emerald-100 dark:bg-emerald-950/40", iconColor: "text-emerald-600 dark:text-emerald-400", gradient: "from-emerald-500/20 via-teal-500/10 to-transparent", textAccent: "text-emerald-600 dark:text-emerald-400", badge: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300" },
-    violet: { iconBg: "bg-violet-100 dark:bg-violet-950/40", iconColor: "text-violet-600 dark:text-violet-400", gradient: "from-violet-500/20 via-purple-500/10 to-transparent", textAccent: "text-violet-600 dark:text-violet-400", badge: "bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300" },
-  };
-  const c = colorClasses[test.color];
-
-  return (
-    <header className="relative overflow-hidden">
-      <div className={`absolute inset-0 bg-gradient-to-b ${c.gradient}`} />
-      <div className="relative mx-auto max-w-3xl px-4 pt-6 pb-2 text-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4 }}
-          className="mb-3 flex justify-center"
-        >
-          <div className={`flex h-16 w-16 items-center justify-center rounded-2xl ${c.iconBg} ${c.iconColor} ring-1 ring-${test.color}-200/40`}>
-            <PsychologyIcon name={test.iconName} className="h-8 w-8" strokeWidth={1.5} />
-          </div>
-        </motion.div>
-
-        <h1 className="text-2xl font-bold text-foreground sm:text-3xl">{test.faName}</h1>
-        <p className={`mt-1 text-xs font-medium ${c.textAccent}`}>{test.enName} • {test.author}</p>
-
-        <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-muted-foreground">
-          {test.longDescription}
-        </p>
-
-        <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
-          <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 font-medium ${c.badge}`}>
-            <ListChecks className="h-3 w-3" />
-            {test.questionCount} سؤال
-          </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/50 px-2.5 py-0.5 font-medium text-foreground/70">
-            <Clock className="h-3 w-3" />
-            {test.estimatedTime}
-          </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/50 px-2.5 py-0.5 font-medium text-foreground/70">
-            <BookOpen className="h-3 w-3" />
-            {Object.keys(test.scales).length} عامل
-          </span>
-        </div>
-      </div>
-    </header>
-  );
-}
-
-function ScalesLegend({ test }: { test: typeof TESTS[TestId] }) {
-  const colorClasses: Record<string, { dot: string; border: string }> = {
-    rose: { dot: "bg-rose-500", border: "hover:border-rose-300 dark:hover:border-rose-700" },
-    emerald: { dot: "bg-emerald-500", border: "hover:border-emerald-300 dark:hover:border-emerald-700" },
-    violet: { dot: "bg-violet-500", border: "hover:border-violet-300 dark:hover:border-violet-700" },
-  };
-  const c = colorClasses[test.color];
-
-  return (
-    <Card className={`border-primary/20 bg-gradient-to-br from-card to-accent/30`}>
-      <CardHeader className="pb-3">
-        <CardTitle className="flex items-center gap-2 text-base text-foreground">
-          <Info className="h-4 w-4 text-primary" />
-          عوامل {test.faName}
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {Object.entries(test.scales).map(([key, scale]) => (
-            <div
-              key={key}
-              className={`rounded-xl border border-border bg-background/60 p-3 transition-colors ${c.border} hover:bg-accent/30`}
-            >
-              <div className="mb-1.5 flex items-center gap-2">
-                <span className={`h-2 w-2 rounded-full ${c.dot}`} />
-                <span className="text-sm font-semibold text-foreground">{scale.fa}</span>
-                <span className="mr-auto text-[10px] font-mono text-muted-foreground">
-                  {scale.en}
-                </span>
-              </div>
-              <p className="text-xs leading-5 text-muted-foreground">{scale.description}</p>
-            </div>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
 function Footer() {
   return (
-    <footer className="mt-auto border-t border-border bg-card/50 py-6">
+    <footer className="mt-auto py-6">
       <div className="mx-auto max-w-3xl px-4 text-center">
-        <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} آکادمی پرورش‌گرافیک — تمامی حقوق محفوظ است.
-        </p>
-        <p className="mt-1 text-[10px] text-muted-foreground/70">
-          این پرسشنامه‌ها جنبه پژوهشی دارند و جایگزین مشاوره تخصصی نیستند.
+        <p className="text-[11px] text-muted-foreground">
+          © {new Date().getFullYear()} آکادمی پرورش‌گرافیک
         </p>
       </div>
     </footer>

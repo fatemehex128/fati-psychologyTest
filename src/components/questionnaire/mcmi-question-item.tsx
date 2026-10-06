@@ -23,23 +23,22 @@ export function McmiQuestionItem({
 }: McmiQuestionItemProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 6 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-30px" }}
-      transition={{ duration: 0.22, delay: Math.min(index * 0.005, 0.05) }}
+      transition={{ duration: 0.15 }}
       className={cn(
-        "group relative rounded-xl border bg-card p-3 transition-all duration-200",
-        "hover:shadow-sm hover:border-violet-400/40",
-        value !== null ? "border-violet-500/40 bg-violet-500/[0.03]" : "border-border"
+        "rounded-xl border bg-card p-3 transition-colors",
+        value !== null ? "border-violet-300/60 dark:border-violet-700/50" : "border-border"
       )}
     >
-      <div className="flex items-start gap-3">
-        {/* question number */}
-        <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-violet-100 text-[10px] font-bold text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
+      <div className="flex items-center gap-3">
+        {/* Question number */}
+        <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-violet-100 text-[11px] font-bold text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
           {index + 1}
         </span>
 
-        {/* question text */}
+        {/* Question text */}
         <p className="flex-1 text-[13px] leading-6 text-foreground">{question.text}</p>
 
         {/* Yes/No buttons */}
@@ -60,9 +59,9 @@ export function McmiQuestionItem({
                   "hover:-translate-y-0.5",
                   isSelected
                     ? isYes
-                      ? "border-violet-500 bg-violet-500 text-white shadow-sm"
-                      : "border-gray-500 bg-gray-500 text-white shadow-sm"
-                    : "border-border bg-background hover:border-violet-400/40 hover:bg-violet-50/50 dark:hover:bg-violet-950/20"
+                      ? "border-violet-500 bg-violet-500 text-white"
+                      : "border-gray-500 bg-gray-500 text-white"
+                    : "border-border bg-background hover:border-violet-300 dark:hover:border-violet-700"
                 )}
               >
                 {opt.label}
