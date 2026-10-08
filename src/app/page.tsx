@@ -2,16 +2,30 @@
 
 import { useState, useEffect } from "react";
 import { LandingPage } from "@/components/landing-page";
+import { TermsPage } from "@/components/terms-page";
 import { TestRunner } from "@/components/test-runner";
 import type { TestId } from "@/lib/tests-config";
 
 export default function Home() {
   const [selectedTest, setSelectedTest] = useState<TestId | null>(null);
+  const [showTerms, setShowTerms] = useState(false);
 
-  // Scroll to top on test change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
-  }, [selectedTest]);
+  }, [selectedTest, showTerms]);
+
+  if (selectedTest && showTerms) {
+    return (
+      <TermsPage
+        testId={selectedTest}
+        onAgree={() => setShowTerms(false)}
+        onBack={() => {
+          setSelectedTest(null);
+          setShowTerms(false);
+        }}
+      />
+    );
+  }
 
   if (selectedTest) {
     return (
@@ -22,5 +36,12 @@ export default function Home() {
     );
   }
 
-  return <LandingPage onSelectTest={(id) => setSelectedTest(id)} />;
+  return (
+    <LandingPage
+      onSelectTest={(id) => {
+        setSelectedTest(id);
+        setShowTerms(true);
+      }}
+    />
+  );
 }
