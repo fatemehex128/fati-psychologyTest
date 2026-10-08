@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { TESTS, type TestId } from "@/lib/tests-config";
-import { PsychologyIcon } from "@/components/psychology-icons";
+import { NEO_QUESTIONS, NEO_FACTORS, type NeoFactor } from "@/lib/neo-questions";
+import { HandIllustration, BrainIllustration, MaskIllustration } from "@/components/illustrations";
 import { PersonalInfoForm, type PersonalInfo } from "@/components/questionnaire/personal-info-form";
 import { QuestionItem } from "@/components/questionnaire/question-item";
 import { NeoQuestionItem } from "@/components/questionnaire/neo-question-item";
@@ -13,6 +14,16 @@ import { ThankYou } from "@/components/questionnaire/thank-you";
 import { Button } from "@/components/ui/button";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/hooks/use-toast";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { ArrowRight, Send, Loader2 } from "lucide-react";
 
 type Answers = Record<number, number>;
@@ -29,6 +40,50 @@ const EMPTY_PERSONAL: PersonalInfo = {
   date: "",
 };
 
+const STORAGE_KEY = "test-progress";
+
+interface SavedProgress {
+  testId: TestId;
+  personal: PersonalInfo;
+  answers: Answers;
+  timestamp: number;
+}
+
+function loadSavedProgress(testId: TestId): SavedProgress | null {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return null;
+    const data = JSON.parse(raw) as SavedProgress;
+    if (data.testId !== testId) return null;
+    if (!data.answers || Object.keys(data.answers).length === 0) return null;
+    return data;
+  } catch {
+    return null;
+  }
+}
+
+function saveProgress(testId: TestId, personal: PersonalInfo, answers: Answers) {
+  try {
+    const data: SavedProgress = {
+      testId,
+      personal,
+      answers,
+      timestamp: Date.now(),
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  } catch {
+    // ignore storage errors
+  }
+}
+
+function clearProgress() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // ignore
+  }
+}
+
 interface TestRunnerProps {
   testId: TestId;
   onBack: () => void;
@@ -41,8 +96,62 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
   const [answers, setAnswers] = useState<Answers>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showResumeDialog, setShowResumeDialog] = useState(false);
+  const [savedData, setSavedData] = useState<SavedProgress | null>(null);
   const { toast } = useToast();
   const questionsSectionRef = useRef<HTMLDivElement>(null);
+  const questionRefs = useRef<Record<number, HTMLDivElement | null>>({});
+
+  // On mount: check for saved progress and show resume dialog
+  useEffect(() => {
+    const saved = loadSavedProgress(testId);
+    if (saved) {
+      setSavedData(saved);
+      setShowResumeDialog(true);
+    }
+  }, [testId]);
+
+  // Sync to localStorage whenever personal or answers change
+  useEffect(() => {
+    if (Object.keys(answers).length > 0 || personal.fullName || personal.age) {
+      saveProgress(testId, personal, answers);
+    }
+  }, [personal, answers, testId]);
+
+  // Handle resume dialog actions
+  const handleResume = () => {
+    if (savedData) {
+      setPersonal(savedData.personal);
+      setAnswers(savedData.answers);
+      setTimeout(() => {
+        const unansweredId = test.questions.find(
+          (q) => savedData.answers[q.id] === undefined
+        )?.id;
+        if (unansweredId && questionRefs.current[unansweredId]) {
+          questionRefs.current[unansweredId]?.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        } else {
+          questionsSectionRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "end",
+          });
+        }
+      }, 200);
+    }
+    setShowResumeDialog(false);
+    setSavedData(null);
+  };
+
+  const handleStartOver = () => {
+    clearProgress();
+    setPersonal(EMPTY_PERSONAL);
+    setAnswers({});
+    setShowResumeDialog(false);
+    setSavedData(null);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const answeredCount = Object.keys(answers).length;
   const totalQuestions = test.questionCount;
@@ -79,6 +188,7 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
     return true;
   };
 
+  // Category scores for generic tests
   const categoryScores = useMemo(() => {
     const sums: Record<string, { total: number; count: number }> = {};
     Object.keys(test.scales).forEach((k) => (sums[k] = { total: 0, count: 0 }));
@@ -97,7 +207,7 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
     const lines: string[] = [];
     lines.push("=".repeat(60));
     lines.push(`پاسخ‌نامه ${test.faName} (${test.enName})`);
-    lines.push("آکادمی پرورش‌گرافیک");
+    lines.push(`Soleimani-2026`);
     lines.push("=".repeat(60));
     lines.push("");
     lines.push("📋 اطلاعات فردی:");
@@ -113,29 +223,107 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
     lines.push(`آزمون: ${test.faName} (${test.enName}) — ${test.author}`);
     lines.push("");
     lines.push("-".repeat(60));
-    lines.push(`📊 خلاصه نمرات در ${Object.keys(test.scales).length} عامل:`);
+    lines.push("📊 نمرات محاسبه‌شده:");
     lines.push("-".repeat(60));
-    Object.entries(categoryScores).forEach(([key, s]) => {
-      const maxPerQuestion = test.likertOptions[test.likertOptions.length - 1].value;
-      const maxTotal = s.count * maxPerQuestion;
-      const avg = s.count > 0 ? (s.total / s.count).toFixed(2) : "0";
-      const scale = test.scales[key];
-      lines.push(`${scale.fa} (${scale.en}):`);
-      lines.push(`  - تعداد پاسخ: ${s.count}`);
-      lines.push(`  - مجموع نمره: ${s.total}${maxTotal > 0 ? ` از ${maxTotal}` : ""}`);
-      lines.push(`  - میانگین: ${avg}`);
+
+    // For Glasser: explicitly compute averages per need based on question ranges
+    if (test.id === "glasser") {
+      const needs = [
+        { name: "نیاز به بقا (Survival)", range: [1, 7] },
+        { name: "نیاز به عشق و صمیمیت (Love & Belonging)", range: [8, 14] },
+        { name: "نیاز به آزادی (Freedom)", range: [15, 21] },
+        { name: "نیاز به قدرت (Power)", range: [22, 28] },
+        { name: "نیاز به تفریح (Fun)", range: [29, 35] },
+      ];
+      needs.forEach((need) => {
+        const questions = test.questions.filter(
+          (q) => q.id >= need.range[0] && q.id <= need.range[1]
+        );
+        const sum = questions.reduce((acc, q) => acc + (answers[q.id] ?? 0), 0);
+        const avg = (sum / 7).toFixed(2);
+        lines.push(`${need.name}:`);
+        lines.push(`  - جمع امتیاز ${need.range[0]} تا ${need.range[1]}: ${sum}`);
+        lines.push(`  - میانگین (جمع تقسیم بر ۷): ${avg}`);
+        lines.push("");
+      });
+    } else if (test.id === "neo") {
+      // NEO scoring: 5 factors × 6 facets × 8 questions = 240
+      const factorOrder: NeoFactor[] = ["neuroticism", "extraversion", "openness", "agreeableness", "conscientiousness"];
+      const factorTotals: Record<NeoFactor, number> = {
+        neuroticism: 0, extraversion: 0, openness: 0, agreeableness: 0, conscientiousness: 0,
+      };
+
+      factorOrder.forEach((factor) => {
+        const factorInfo = NEO_FACTORS[factor];
+        lines.push(`■ ${factorInfo.fa} (${factorInfo.en}) [${factorInfo.symbol}]:`);
+        let factorSum = 0;
+        factorInfo.facets.forEach((facet) => {
+          const facetQuestions = NEO_QUESTIONS.filter((q) => q.facet === facet.key);
+          let facetSum = 0;
+          facetQuestions.forEach((q) => {
+            const userAnswer = answers[q.id];
+            if (typeof userAnswer === "number") {
+              const score = q.reverseScored ? (4 - userAnswer) : userAnswer;
+              facetSum += score;
+            }
+          });
+          factorSum += facetSum;
+          lines.push(`  ▸ ${facet.fa} [${facet.key}]: ${facetSum}/32`);
+        });
+        factorTotals[factor] = factorSum;
+        lines.push(`  ▶ مجموع: ${factorSum}/192`);
+        lines.push("");
+      });
+
+      // Summary table
+      lines.push("─".repeat(60));
+      lines.push("📊 خلاصه نمرات ۵ مقیاس اصلی:");
+      lines.push("─".repeat(60));
+      factorOrder.forEach((factor) => {
+        const info = NEO_FACTORS[factor];
+        lines.push(`${info.fa} (${info.en}): ${factorTotals[factor]}/192`);
+      });
       lines.push("");
-    });
+    } else {
+      // Generic summary for other tests
+      Object.entries(categoryScores).forEach(([key, s]) => {
+        const maxPerQuestion = test.likertOptions[test.likertOptions.length - 1].value;
+        const maxTotal = s.count * maxPerQuestion;
+        const avg = s.count > 0 ? (s.total / s.count).toFixed(2) : "0";
+        const scale = test.scales[key];
+        lines.push(`${scale.fa} (${scale.en}):`);
+        lines.push(`  - تعداد پاسخ: ${s.count}`);
+        lines.push(`  - مجموع نمره: ${s.total}${maxTotal > 0 ? ` از ${maxTotal}` : ""}`);
+        lines.push(`  - میانگین: ${avg}`);
+        lines.push("");
+      });
+    }
     lines.push("-".repeat(60));
     lines.push("📝 پاسخ‌های تفصیلی به سؤالات:");
     lines.push("-".repeat(60));
-    test.questions.forEach((q) => {
-      const v = answers[q.id] ?? "-";
-      const label = typeof v === "number" ? getLikertLabel(test, v) : "-";
-      lines.push(`${q.id}. ${q.text}`);
-      lines.push(`   پاسخ: ${v}${label !== "-" ? ` (${label})` : ""}`);
-      lines.push("");
-    });
+    if (test.id === "neo") {
+      // Compact format for NEO (240 questions, large text)
+      const answersPerLine = 8;
+      for (let i = 0; i < test.questions.length; i += answersPerLine) {
+        const chunk = test.questions.slice(i, i + answersPerLine);
+        const parts = chunk.map((q) => {
+          const v = answers[q.id];
+          if (typeof v === "number") {
+            return `Q${q.id}=${v}`;
+          }
+          return `Q${q.id}=-`;
+        });
+        lines.push(parts.join("  "));
+      }
+    } else {
+      test.questions.forEach((q) => {
+        const v = answers[q.id] ?? "-";
+        const label = typeof v === "number" ? getLikertLabel(test, v) : "-";
+        lines.push(`${q.id}. ${q.text}`);
+        lines.push(`   پاسخ: ${v}${label !== "-" ? ` (${label})` : ""}`);
+        lines.push("");
+      });
+    }
     lines.push("=".repeat(60));
     lines.push("پایان پاسخ‌نامه");
     lines.push("=".repeat(60));
@@ -188,7 +376,8 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
         const max = s.count * test.likertOptions[test.likertOptions.length - 1].value;
         formData.append(`score_${k}`, `${s.total}/${max}`);
       });
-      formData.append("answers_json", JSON.stringify(answers, null, 2));
+      // Compact JSON (no pretty printing) to save space
+      formData.append("answers_json", JSON.stringify(answers));
 
       const res = await fetch("/api/submit", {
         method: "POST",
@@ -205,6 +394,7 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
         description: "پاسخ‌های شما برای تیم پژوهشی ارسال شد.",
       });
       setIsSubmitted(true);
+      clearProgress();
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (err) {
       console.error(err);
@@ -223,6 +413,7 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
   };
 
   const handleReset = () => {
+    clearProgress();
     setPersonal(EMPTY_PERSONAL);
     setAnswers({});
     setPersonalErrors({});
@@ -241,18 +432,65 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
     );
   }
 
-  // Color classes per test
-  const colorClasses: Record<string, { iconBg: string; iconColor: string; textAccent: string; btnHover: string }> = {
-    rose: { iconBg: "bg-rose-100 dark:bg-rose-950/40", iconColor: "text-rose-600 dark:text-rose-400", textAccent: "text-rose-600 dark:text-rose-400", btnHover: "hover:border-rose-300" },
-    emerald: { iconBg: "bg-emerald-100 dark:bg-emerald-950/40", iconColor: "text-emerald-600 dark:text-emerald-400", textAccent: "text-emerald-600 dark:text-emerald-400", btnHover: "hover:border-emerald-300" },
-    violet: { iconBg: "bg-violet-100 dark:bg-violet-950/40", iconColor: "text-violet-600 dark:text-violet-400", textAccent: "text-violet-600 dark:text-violet-400", btnHover: "hover:border-violet-300" },
+  // Color classes per test - applied consistently across all UI elements
+  const colorClasses: Record<string, {
+    iconBg: string;
+    textAccent: string;
+    btnHover: string;
+    progressColor: "rose" | "emerald" | "violet";
+    submitBtn: string;
+    submitBtnHover: string;
+    topBorder: string;
+    heroBg: string;
+    dotColor: string;
+  }> = {
+    rose: {
+      iconBg: "bg-rose-50 dark:bg-rose-950/20",
+      textAccent: "text-rose-600 dark:text-rose-400",
+      btnHover: "hover:border-rose-300",
+      progressColor: "rose",
+      submitBtn: "bg-rose-600 hover:bg-rose-700 text-white",
+      submitBtnHover: "border-rose-300",
+      topBorder: "border-rose-200 dark:border-rose-900/50",
+      heroBg: "from-rose-50 to-card dark:from-rose-950/20 dark:to-card",
+      dotColor: "bg-rose-500",
+    },
+    emerald: {
+      iconBg: "bg-emerald-50 dark:bg-emerald-950/20",
+      textAccent: "text-emerald-600 dark:text-emerald-400",
+      btnHover: "hover:border-emerald-300",
+      progressColor: "emerald",
+      submitBtn: "bg-emerald-600 hover:bg-emerald-700 text-white",
+      submitBtnHover: "border-emerald-300",
+      topBorder: "border-emerald-200 dark:border-emerald-900/50",
+      heroBg: "from-emerald-50 to-card dark:from-emerald-950/20 dark:to-card",
+      dotColor: "bg-emerald-500",
+    },
+    violet: {
+      iconBg: "bg-violet-50 dark:bg-violet-950/20",
+      textAccent: "text-violet-600 dark:text-violet-400",
+      btnHover: "hover:border-violet-300",
+      progressColor: "violet",
+      submitBtn: "bg-violet-600 hover:bg-violet-700 text-white",
+      submitBtnHover: "border-violet-300",
+      topBorder: "border-violet-200 dark:border-violet-900/50",
+      heroBg: "from-violet-50 to-card dark:from-violet-950/20 dark:to-card",
+      dotColor: "bg-violet-500",
+    },
   };
   const c = colorClasses[test.color];
 
+  // Illustration component per test
+  const Illustration = {
+    glasser: HandIllustration,
+    neo: BrainIllustration,
+    mcmi: MaskIllustration,
+  }[test.id];
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      {/* Minimal top bar */}
-      <div className="sticky top-0 z-40 border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
+      {/* Minimal top bar - just test name, no badge */}
+      <div className={`sticky top-0 z-40 border-b ${c.topBorder} bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80`}>
         <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3">
           <button
             onClick={onBack}
@@ -262,22 +500,43 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
             بازگشت
           </button>
 
-          {/* Test title + icon (minimal) */}
+          {/* Test name with accent color dot */}
           <div className="flex items-center gap-2">
-            <span className={`flex h-7 w-7 items-center justify-center rounded-lg ${c.iconBg} ${c.iconColor}`}>
-              <PsychologyIcon name={test.iconName} className="h-4 w-4" />
-            </span>
+            <span className={`h-1.5 w-1.5 rounded-full ${c.dotColor}`} />
             <span className="text-sm font-medium text-foreground">{test.faName}</span>
           </div>
         </div>
       </div>
 
-      {/* Progress bar (sticky) */}
+      {/* Progress bar (sticky) - themed */}
       <div className="sticky top-[57px] z-30">
-        <ProgressBar answered={answeredCount} total={totalQuestions} />
+        <ProgressBar answered={answeredCount} total={totalQuestions} color={c.progressColor} />
       </div>
 
       <main className="flex-1 pb-10 pt-4">
+        {/* Hero with 3D illustration */}
+        <div className="mx-auto max-w-3xl px-4 mb-5">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className={`flex items-center gap-4 rounded-2xl border ${c.topBorder} bg-gradient-to-l ${c.heroBg} p-4`}
+          >
+            {/* 3D illustration */}
+            <div className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl ${c.iconBg}`}>
+              <Illustration className="h-13 w-13" />
+            </div>
+            {/* Text */}
+            <div className="flex-1">
+              <h1 className="text-base font-bold text-foreground sm:text-lg">{test.faName}</h1>
+              <p className={`text-xs ${c.textAccent}`}>{test.enName} • {test.author}</p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                {test.questionCount} سؤال • {test.estimatedTime}
+              </p>
+            </div>
+          </motion.div>
+        </div>
+
         <div className="mx-auto max-w-3xl px-4 space-y-5">
           {/* Personal Info Form */}
           <PersonalInfoForm
@@ -296,52 +555,64 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
             <div className="space-y-2.5">
               {test.id === "glasser" &&
                 test.questions.map((q, idx) => (
-                  <QuestionItem
+                  <div
                     key={q.id}
-                    question={q as any}
-                    index={idx}
-                    value={answers[q.id] ?? null}
-                    onAnswer={handleAnswer}
-                    likertOptions={test.likertOptions}
-                  />
+                    ref={(el) => { questionRefs.current[q.id] = el; }}
+                  >
+                    <QuestionItem
+                      question={q as any}
+                      index={idx}
+                      value={answers[q.id] ?? null}
+                      onAnswer={handleAnswer}
+                      likertOptions={test.likertOptions}
+                    />
+                  </div>
                 ))}
               {test.id === "neo" &&
                 test.questions.map((q, idx) => (
-                  <NeoQuestionItem
+                  <div
                     key={q.id}
-                    question={q as any}
-                    index={idx}
-                    value={answers[q.id] ?? null}
-                    onAnswer={handleAnswer}
-                    likertOptions={test.likertOptions}
-                  />
+                    ref={(el) => { questionRefs.current[q.id] = el; }}
+                  >
+                    <NeoQuestionItem
+                      question={q as any}
+                      index={idx}
+                      value={answers[q.id] ?? null}
+                      onAnswer={handleAnswer}
+                      likertOptions={test.likertOptions}
+                    />
+                  </div>
                 ))}
               {test.id === "mcmi" &&
                 test.questions.map((q, idx) => (
-                  <McmiQuestionItem
+                  <div
                     key={q.id}
-                    question={q as any}
-                    index={idx}
-                    value={answers[q.id] ?? null}
-                    onAnswer={handleAnswer}
-                    likertOptions={test.likertOptions}
-                  />
+                    ref={(el) => { questionRefs.current[q.id] = el; }}
+                  >
+                    <McmiQuestionItem
+                      question={q as any}
+                      index={idx}
+                      value={answers[q.id] ?? null}
+                      onAnswer={handleAnswer}
+                      likertOptions={test.likertOptions}
+                    />
+                  </div>
                 ))}
             </div>
           </div>
 
-          {/* Submit Button (sticky bottom) */}
+          {/* Submit Button (sticky bottom) - themed */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="sticky bottom-3 z-20"
           >
-            <div className="rounded-2xl border border-primary/30 bg-card/95 p-3 shadow-lg backdrop-blur supports-[backdrop-filter]:bg-card/90">
+            <div className={`rounded-2xl border ${c.submitBtnHover} bg-card/95 p-3 shadow-lg backdrop-blur supports-[backdrop-filter]:bg-card/90`}>
               <div className="flex items-center justify-between gap-3">
                 <div className="hidden sm:block">
                   <p className="text-xs text-muted-foreground">پیشرفت شما</p>
-                  <p className="text-sm font-semibold text-foreground">
+                  <p className={`text-sm font-semibold ${c.textAccent}`}>
                     {progressPercentage}٪ تکمیل شده
                   </p>
                 </div>
@@ -349,7 +620,7 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
                   type="button"
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className="flex-1 sm:flex-none gap-2 h-12 text-base shadow-md"
+                  className={`flex-1 sm:flex-none gap-2 h-12 text-base shadow-md ${c.submitBtn}`}
                   size="lg"
                 >
                   {isSubmitting ? (
@@ -376,6 +647,28 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
       </main>
 
       <Footer />
+
+      {/* Resume progress dialog */}
+      <AlertDialog open={showResumeDialog} onOpenChange={setShowResumeDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>ادامه پاسخ‌دهی؟</AlertDialogTitle>
+            <AlertDialogDescription>
+              ما متوجه شدیم که شما قبلاً به بخشی از این آزمون پاسخ داده‌اید
+              {savedData ? ` (${Object.keys(savedData.answers).length} سؤال)` : ""}.
+              آیا می‌خواهید از همان‌جا ادامه دهید یا از ابتدا شروع کنید؟
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter className="flex-row justify-end gap-2">
+            <AlertDialogCancel onClick={handleStartOver}>
+              از ابتدا شروع کن
+            </AlertDialogCancel>
+            <AlertDialogAction onClick={handleResume}>
+              ادامه از محل قبلی
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
@@ -384,8 +677,8 @@ function Footer() {
   return (
     <footer className="mt-auto py-6">
       <div className="mx-auto max-w-3xl px-4 text-center">
-        <p className="text-[11px] text-muted-foreground">
-          © {new Date().getFullYear()} آکادمی پرورش‌گرافیک
+        <p className="font-mono text-[11px] text-muted-foreground">
+          Soleimani-2026
         </p>
       </div>
     </footer>

@@ -44,7 +44,7 @@ export function NeoQuestionItem({
         </p>
       </div>
 
-      {/* Likert options (5-point: 0-4) */}
+      {/* Likert options (5-point: 0-4) - labels only, no numbers */}
       <div className="grid grid-cols-5 gap-1">
         {likertOptions.map((opt) => {
           const isSelected = value === opt.value;
@@ -56,7 +56,7 @@ export function NeoQuestionItem({
               title={opt.description}
               aria-pressed={isSelected}
               className={cn(
-                "flex flex-col items-center justify-center gap-0.5 rounded-lg py-1.5 px-1",
+                "flex flex-col items-center justify-center gap-0.5 rounded-lg py-2 px-1",
                 "border text-center transition-all duration-150",
                 "focus:outline-none focus:ring-2 focus:ring-emerald-400/40",
                 "hover:-translate-y-0.5",
@@ -66,20 +66,20 @@ export function NeoQuestionItem({
               )}
             >
               <span className={cn(
-                "text-xs font-bold leading-none",
+                "text-[10px] leading-tight sm:text-[11px] font-medium",
                 isSelected ? "text-white" : "text-emerald-600 dark:text-emerald-400"
-              )}>
-                {opt.value}
-              </span>
-              <span className={cn(
-                "text-[9px] leading-tight sm:text-[10px]",
-                isSelected ? "text-white/90" : "text-muted-foreground"
               )}>
                 {opt.label}
               </span>
             </button>
           );
         })}
+      </div>
+
+      {/* Likert hint */}
+      <div className="mt-1.5 flex items-center justify-between text-[9px] text-muted-foreground">
+        <span>کاملاً مخالفم</span>
+        <span>کاملاً موافقم</span>
       </div>
     </motion.div>
   );

@@ -10,9 +10,9 @@ const vazirmatn = Vazirmatn({
 });
 
 export const metadata: Metadata = {
-  title: "آکادمی پرورش‌گرافیک | پلتفرم آزمون‌های روان‌شناختی",
+  title: "آزمون‌های روان‌شناختی",
   description:
-    "مجموعه آزمون‌های روان‌شناختی استاندارد: پرسشنامه نیازهای گلاسر، نئو (NEO PI-R) و میلون (MCMI-III). برای خودشناسی، ارزیابی شخصیت و رشد فردی.",
+    "پلتفرم آزمون‌های روان‌شناختی استاندارد: پرسشنامه نیازهای گلاسر، نئو (NEO PI-R) و میلون (MCMI-III). برای خودشناسی، ارزیابی شخصیت و رشد فردی.",
   keywords: [
     "پرسشنامه گلاسر",
     "آزمون نئو",
@@ -21,14 +21,10 @@ export const metadata: Metadata = {
     "MCMI-III",
     "روان‌شناسی",
     "شخصیت‌شناسی",
-    "آکادمی پرورش‌گرافیک",
   ],
-  authors: [{ name: "آکادمی پرورش‌گرافیک" }],
+  authors: [{ name: "Soleimani-2026" }],
   icons: {
-    icon: [
-      { url: "/logo.png", type: "image/png" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
-    ],
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
   },
 };
 
