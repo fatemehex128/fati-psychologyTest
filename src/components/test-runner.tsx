@@ -396,13 +396,23 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
       setIsSubmitted(true);
       clearProgress();
       window.scrollTo({ top: 0, behavior: "smooth" });
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      toast({
-        title: "خطا در ارسال",
-        description: "لطفاً اتصال اینترنت را بررسی کرده و مجدد تلاش کنید.",
-        variant: "destructive",
-      });
+      // Check if it's a FormSubmit activation error
+      const errorMsg = err?.message || "";
+      if (errorMsg.includes("Activation") || errorMsg.includes("needs Activation")) {
+        toast({
+          title: "نیاز به فعال‌سازی ایمیل",
+          description: "سرویس ایمیل هنوز فعال نشده است. لطفاً صندوق ایمیل خود را بررسی کرده و روی لینک فعال‌سازی کلیک کنید.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "خطا در ارسال",
+          description: "لطفاً اتصال اینترنت را بررسی کرده و مجدد تلاش کنید.",
+          variant: "destructive",
+        });
+      }
     } finally {
       setIsSubmitting(false);
     }

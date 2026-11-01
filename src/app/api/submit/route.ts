@@ -69,6 +69,18 @@ export async function POST(request: Request) {
       );
     }
 
+    // Check if FormSubmit returned an error in the response body
+    // FormSubmit returns: {"success":"false","message":"This form needs Activation..."}
+    // Note: "false" is a string, not a boolean
+    const formSubmitSuccess = data?.success === true || data?.success === "true";
+    if (!formSubmitSuccess) {
+      const errorMsg = data?.message || "FormSubmit returned an error";
+      return NextResponse.json(
+        { success: false, error: errorMsg, details: data },
+        { status: 200 }
+      );
+    }
+
     return NextResponse.json({ success: true, data });
   } catch (error: any) {
     console.error("Submit API error:", error);

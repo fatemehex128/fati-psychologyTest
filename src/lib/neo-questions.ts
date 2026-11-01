@@ -286,7 +286,7 @@ export const NEO_QUESTIONS: NeoQuestion[] = [
   { id: 201, factor: "neuroticism", facet: "N5", text: "ﻣﻦ ﺑﻌﻀﯽ ﻣﻮاﻗﻊ ﮐﺎرﻫﺎﯾﯽ را ﺑﺪون ﺗﺎﻣﻞ اﻧﺠﺎم ﻣﯽ دﻫﻢ و ﺑﻌﺪا ﭘﺸﯿﻤﺎن ﻣﯽ ﺷﻮم.", reverseScored: false },
   { id: 202, factor: "extraversion", facet: "E5", text: "ﻣﻦ از رﻧﮕﻬﺎي روﺷﻦ و ﻟﺒﺎﺳﻬﺎي ﭘﺮ زرق و ﺑﺮق ﺧﻮﺷﻢ ﻣﯽ آﯾﺪ.", reverseScored: false },
   { id: 203, factor: "openness", facet: "O5", text: "ﻣﻦ ﮐﻨﺠﮑﺎوي ﻓﮑﺮي زﯾﺎدي دارم.", reverseScored: false },
-  { id: 204, factor: "agreeableness", facet: "A5", text: "من ترجیح می‌دهم از دیگران تجدید شود تا اینکه خودم مورد تجدید قرار گیرم.", reverseScored: false },
+  { id: 204, factor: "agreeableness", facet: "A5", text: "من ترجیح می‌دهم از دیگران تمدید شود تا اینکه خودم مورد تمدید قرار گیرم.", reverseScored: false },
   { id: 205, factor: "conscientiousness", facet: "C5", text: "آن‌قدر خرده‌کاری برای انجام دادن کارها وجود دارد که گاهی همه آن‌ها را نادیده می‌گیرم.", reverseScored: true },
   { id: 206, factor: "neuroticism", facet: "N6", text: "در ﺷﺮاﯾﻄﯽ ﮐﻪ ﺑﻪ ﻧﻈﺮ ﻣﯽ رﺳﺪ ﻫﻤﻪ ﭼﯿﺰ ﺑﻪ ﻃﻮر ﻏﻠﻂ ﭘﯿﺶ ﻣﯽ رود ،ﻣﻦ ﺑﺎزﻫﻢ ﻣﯽ ﺗﻮاﻧﻢ ﺗﺼﻤﯿﻤﺎت ﺧﻮﺑﯽ اﺗﺨﺎذ ﮐﻨﻢ.", reverseScored: true },
   { id: 207, factor: "extraversion", facet: "E6", text: "من به ندرت برای توصیف تجربیات خود از کلماتی چون «فوق‌العاده» یا «جنجالی» استفاده می‌کنم.", reverseScored: true },
@@ -320,7 +320,7 @@ export const NEO_QUESTIONS: NeoQuestion[] = [
   { id: 235, factor: "conscientiousness", facet: "C5", text: "من آدم بسیار با انضباطی هستم و می‌توانم خود را خوب کنترل کنم.", reverseScored: false },
   { id: 236, factor: "neuroticism", facet: "N6", text: "ﻣﻦ از ﻟﺤﺎظ ﻋﺎﻃﻔﯽ ﻓﺮدي ﮐﺎﻣﻼ ﺑﺎﺛﺒﺎت و ﻣﺘﻌﺎدل ﻫﺴﺘﻢ.", reverseScored: false },
   { id: 237, factor: "extraversion", facet: "E6", text: "ﻣﻦ زود ﺧﻨﺪه ام ﻣﯽ ﮔﯿﺮد.", reverseScored: false },
-  { id: 238, factor: "openness", facet: "O6", text: "ﺑﻪ ﻋﻘﯿﺪه ﻣﻦ ﻓﺴﻔﻪ ﺟﺪﯾﺪ \\\" آزادي ﻓﺮدي\\\" ﻓﻠﺴﻔﻪ ﻗﺎﺑﻞ ﻗﺒﻮﻟﯽ ﻧﯿﺴﺖ.", reverseScored: true },
+  { id: 238, factor: "openness", facet: "O6", text: "به عقیده من فلسفه جدید «آزادی فردی» فلسفه قابل قبولی نیست.", reverseScored: true },
   { id: 239, factor: "agreeableness", facet: "A6", text: "ﺗﺮﭼﯿﺢ ﻣﯽ دﻫﻢ دﯾﮕﺮان ﻣﺮا ﻓﺮدي دل رﺣﻢ و ﺧﻄﺎ ﺑﺨﺶ ﺑﺸﻨﺎﺳﻨﺪ ﺗﺎ ﺻﺮﻓﺎ ﻃﺮﻓﺪار اﺟﺮاي ﻋﺪاﻟﺖ.", reverseScored: false },
   { id: 240, factor: "conscientiousness", facet: "C6", text: "ﻣﻦ ﻗﺒﻞ از ﭘﺎﺳﺦ دادن ﺑﻪ ﻫﺮ ﺳﻮال ﺑﻪ دﻗﺖ درﺑﺎره آن ﻓﮑﺮ ﻣﯽ ﮐﻨﻢ.", reverseScored: false },
 ];
