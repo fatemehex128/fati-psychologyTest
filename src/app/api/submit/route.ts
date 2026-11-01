@@ -1,30 +1,28 @@
 import { NextResponse } from "next/server";
 import { execFile } from "child_process";
 import { promisify } from "util";
-import { writeFile, mkdtemp } from "fs/promises";
-import { tmpdir } from "os";
-import path from "path";
 
 const execFileAsync = promisify(execFile);
-const FORMSUBMIT_EMAIL = "fatemehex128@gmail.com";
+const WEB3FORMS_ACCESS_KEY = "d6123485-523f-407c-883d-12a44643aa6b";
 
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
-    const origin = request.headers.get("origin") || "http://localhost:3000";
 
-    // Build curl arguments to bypass Cloudflare
-    // curl has a different TLS fingerprint that FormSubmit accepts
+    // Build curl arguments
     const args: string[] = [
       "-s",
       "-X", "POST",
-      "https://formsubmit.co/ajax/" + FORMSUBMIT_EMAIL,
+      "https://api.web3forms.com/submit",
       "-H", "Accept: application/json",
       "-H", "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
-      "-H", "Origin: " + origin,
-      "-H", "Referer: " + origin + "/",
+      "-H", "Origin: https://web3forms.com",
+      "-H", "Referer: https://web3forms.com/",
       "-w", "\n---HTTP_STATUS:%{http_code}---",
     ];
+
+    // Add access_key first
+    args.push("-F", `access_key=${WEB3FORMS_ACCESS_KEY}`);
 
     // Add form fields
     formData.forEach((value, key) => {
@@ -34,8 +32,8 @@ export async function POST(request: Request) {
     });
 
     const { stdout } = await execFileAsync("curl", args, {
-      timeout: 30000,
-      maxBuffer: 1024 * 1024 * 5,
+      timeout: 60000,
+      maxBuffer: 1024 * 1024 * 20,
     });
 
     // Parse status and response
@@ -48,8 +46,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           success: false,
-          error:
-            "سرویس ارسال ایمیل توسط Cloudflare محدود شده است. لطفاً چند دقیقه دیگر تلاش کنید.",
+          error: "سرویس ارسال ایمیل توسط Cloudflare محدود شده است. لطفاً چند دقیقه دیگر تلاش کنید.",
         },
         { status: 503 }
       );
@@ -64,26 +61,22 @@ export async function POST(request: Request) {
 
     if (statusCode < 200 || statusCode >= 300) {
       return NextResponse.json(
-        { success: false, error: "FormSubmit request failed", details: data },
+        { success: false, error: "Web3Forms request failed", details: data },
         { status: statusCode }
       );
     }
 
-    // Check if FormSubmit returned an error in the response body
-    // FormSubmit returns: {"success":"false","message":"This form needs Activation..."}
-    // Note: "false" is a string, not a boolean
-    const formSubmitSuccess = data?.success === true || data?.success === "true";
-    if (!formSubmitSuccess) {
-      const errorMsg = data?.message || "FormSubmit returned an error";
+    // Check if Web3Forms returned success
+    if (!data.success) {
       return NextResponse.json(
-        { success: false, error: errorMsg, details: data },
+        { success: false, error: data?.message || "Web3Forms returned an error", details: data },
         { status: 200 }
       );
     }
 
     return NextResponse.json({ success: true, data });
   } catch (error: any) {
-    console.error("Submit API error:", error);
+    console.error("Submit API error:", error?.message || error);
     return NextResponse.json(
       { success: false, error: error?.message || "Internal server error" },
       { status: 500 }
