@@ -239,7 +239,7 @@ export const NEO_QUESTIONS: NeoQuestion[] = [
   { id: 154, factor: "agreeableness", facet: "A1", text: "واﮐﻨﺶ اوﻟﯿﻪ ﻣﻦ ﺑﻪ ﻣﺮدم آن اﺳﺖ ﮐﻪ ﺑﻪ آﻧﻬﺎ اﻋﺘﻤﺎد ﮐﻨﻢ.", reverseScored: false },
   { id: 155, factor: "conscientiousness", facet: "C1", text: "ﻣﻦ ﻇﺎﻫﺮا در ﻫﯿﭻ ﮐﺎري ﻣﻮﻓﻖ ﻧﻤﯽ ﺷﻮم.", reverseScored: true },
   { id: 156, factor: "neuroticism", facet: "N2", text: "من خیلی به ندرت واقعاً عصبانی می‌شوم.", reverseScored: true },
-  { id: 157, factor: "extraversion", facet: "E2", text: "ﺗﺮﺟﯿﺢ ﻣﯽ دﻫﻢ ﺗﻌﻄﯿﻼت ﺧﻮد را در ﯾﮏ ﺳﺎﺣﻞ ﻋﻤﻮﻣﯽ ﺷﻠﻮغ ﺑﮕﺬراﻧﻢ ﺗﺎ در ﺳﮏ ﮐﻠﺒﻪ ﺟﻨﮕﻠﯽ دور اﻓﺘﺎده.", reverseScored: false },
+  { id: 157, factor: "extraversion", facet: "E2", text: "ترجیح می‌دهم تعطیلات خود را در یک ساحل عمومی شلوغ بگذرانم تا در یک کلبه جنگلی دور افتاده.", reverseScored: false },
   { id: 158, factor: "openness", facet: "O2", text: "اﻧﻮاع ﺧﺎﺻﯽ از ﻣﻮﺳﯿﻘﯽ ﺑﯿﺶ از اﻧﺪازه ﺑﺮاي ﻣﻦ ﺷﻮراﻧﮕﯿﺰ ﻫﺴﺘﻨﺪ.", reverseScored: false },
   { id: 159, factor: "agreeableness", facet: "A2", text: "ﺑﻌﻀﯽ وﻗﺘﻬﺎ ﻣﺮدم را ﺑﺎ ﭼﺮب زﺑﺎﻧﯽ و ﺗﻘﻠﺐ ﺑﻪ اﻧﺠﺎم دادن ﮐﺎرﻫﺎي ﻣﻮرد ﻧﻈﺮ ﺧﻮدم وادار ﻣﯽ ﮐﻨﻢ.", reverseScored: true },
   { id: 160, factor: "conscientiousness", facet: "C2", text: "ﻣﻦ ﻣﻌﻤﻮﻻ آدﻣﯽ ﮐﻢ رو و زﯾﺎد ﺳﺨﺘﮕﯿﺮ و ﭘﺮﺗﻮﻗﻊ ﻫﺴﺘﻢ.", reverseScored: false },

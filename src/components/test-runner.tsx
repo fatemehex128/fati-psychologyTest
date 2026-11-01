@@ -309,6 +309,10 @@ export function TestRunner({ testId, onBack }: TestRunnerProps) {
         const parts = chunk.map((q) => {
           const v = answers[q.id];
           if (typeof v === "number") {
+            // For MCMI: 1=بله, 0=خیر / For NEO: 0-4
+            if (test.id === "mcmi") {
+              return `Q${q.id}=${v === 1 ? "بله" : "خیر"}`;
+            }
             return `Q${q.id}=${v}`;
           }
           return `Q${q.id}=-`;
